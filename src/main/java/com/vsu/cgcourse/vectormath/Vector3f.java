@@ -45,4 +45,9 @@ public class Vector3f extends Vector {
         }
         return vector1.crossProduct(vector2);
     }
+
+    @Override
+    public Vector normalization() {
+        return super.normalization();
+    }
 }

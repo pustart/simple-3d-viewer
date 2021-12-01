@@ -13,6 +13,10 @@ public class Matrix4x4 extends Matrix {
         this.values = values;
     }
 
+    public float get(int row, int column) {
+        return values[row][column];
+    }
+
     public static Matrix createUnitaryMatrix4x4() {
         return createUnitaryMatrix(4);
     }

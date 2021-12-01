@@ -4,8 +4,8 @@ import com.vsu.cgcourse.model.Mesh;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import javax.vecmath.Vector2f;
-import javax.vecmath.Vector3f;
+import com.vsu.cgcourse.vectormath.Vector2f;
+import com.vsu.cgcourse.vectormath.Vector3f;
 
 public class ObjReader {
 

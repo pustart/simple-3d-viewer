@@ -1,8 +1,8 @@
 package com.vsu.cgcourse.model;
 
 import java.util.*;
-import javax.vecmath.Vector3f;
-import javax.vecmath.Vector2f;
+import com.vsu.cgcourse.vectormath.Vector3f;
+import com.vsu.cgcourse.vectormath.Vector2f;
 
 public class Mesh {
 
