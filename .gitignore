@@ -16,3 +16,4 @@ buildNumber.properties
 *.iml
 out
 gen
+/src/main/java/com/vsu/cgcourse/vectormath/Point2f.java
