@@ -26,9 +26,9 @@ public class GraphicConveyor {
         resultX.cross(up, resultZ);
         resultY.cross(resultZ, resultX);
 
-        resultX.normalization();
-        resultY.normalization();
-        resultZ.normalization();
+        resultX.normalize();
+        resultY.normalize();
+        resultZ.normalize();
 
         float[][] matrix = new float[][]{
                 {resultX.getX(), resultY.getX(), resultZ.getX(), 0},
