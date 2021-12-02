@@ -1,6 +1,6 @@
 package com.vsu.cgcourse.renderengine;
-import javax.vecmath.Vector3f;
-import javax.vecmath.Matrix4f;
+import com.vsu.cgcourse.vectormath.Vector3f;
+import com.vsu.cgcourse.vectormath.Matrix4x4;
 
 public class Camera {
 
@@ -47,11 +47,11 @@ public class Camera {
         this.target.add(target);
     }
 
-    Matrix4f getViewMatrix() {
+    Matrix4x4 getViewMatrix() {
         return GraphicConveyor.lookAt(position, target);
     }
 
-    Matrix4f getProjectionMatrix() {
+    Matrix4x4 getProjectionMatrix() {
         return GraphicConveyor.perspective(fov, aspectRatio, nearPlane, farPlane);
     }
 
