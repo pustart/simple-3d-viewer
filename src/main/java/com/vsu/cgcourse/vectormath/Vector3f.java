@@ -50,4 +50,39 @@ public class Vector3f extends Vector {
     public Vector normalization() {
         return super.normalization();
     }
+
+    @Override
+    public void add(Vector v1) {
+        super.add(v1);
+    }
+
+    @Override
+    public void sub(Vector v1, Vector v2) {
+        super.sub(v1, v2);
+    }
+
+    public void cross(Vector3f v1, Vector3f v2) {
+        float x = v1.getY() * v2.getZ() - v1.getZ() * v2.getY();
+        float y = v2.getX() * v1.getZ() - v2.getZ() * v1.getX();
+        float z = v1.getX() * v2.getY() - v1.getY() * v2.getX();
+        coordinates[0] = x;
+        coordinates[1] = y;
+        coordinates[2] = z;
+    }
+
+    public final float dot(Vector3f v1) {
+        return coordinates[0] * v1.getX() + coordinates[1] * v1.getY() + coordinates[2] * v1.getZ();
+    }
+
+    public float getX() {
+        return coordinates[0];
+    }
+
+    public float getY() {
+        return coordinates[1];
+    }
+
+    public float getZ() {
+        return coordinates[2];
+    }
 }

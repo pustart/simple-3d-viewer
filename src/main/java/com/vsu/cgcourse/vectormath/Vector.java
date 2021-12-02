@@ -189,4 +189,12 @@ public class Vector {
         }
         return vector1.scalarProduct(vector2);
     }
+
+    public void add(Vector v1) {
+        coordinates = addition(v1).coordinates;
+    }
+
+    public void sub(Vector v1, Vector v2) {
+        coordinates = subtraction(v1, v2).coordinates;
+    }
 }
