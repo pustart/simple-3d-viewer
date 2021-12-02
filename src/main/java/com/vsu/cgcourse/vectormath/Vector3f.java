@@ -69,6 +69,10 @@ public class Vector3f extends Vector {
         return coordinates[0] * v1.getX() + coordinates[1] * v1.getY() + coordinates[2] * v1.getZ();
     }
 
+    public void normalize() {
+        coordinates = normalization(this).coordinates;
+    }
+
     public float getX() {
         return coordinates[0];
     }
