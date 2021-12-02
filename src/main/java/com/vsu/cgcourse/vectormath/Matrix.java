@@ -193,4 +193,19 @@ public class Matrix {
     public static Matrix createUnitaryMatrix(final int dimension) {
         return new Matrix(createUnitaryTwoDimensionalArray(dimension));
     }
+
+    public void mul(Matrix m1) {
+        final int size = m1.values.length;
+        float[][] result = new float[size][size];
+        for (int row = 0; row < size; row++) {
+            for (int column = 0; column < size; column++) {
+                float tempCell = 0;
+                for (int internalColumn = 0; internalColumn < size; internalColumn++) {
+                    tempCell = tempCell + values[row][internalColumn] * m1.values[internalColumn][column];
+                }
+                result[row][column] = tempCell;
+            }
+        }
+        values = result;
+    }
 }
