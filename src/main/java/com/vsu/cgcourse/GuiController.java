@@ -1,6 +1,7 @@
 package com.vsu.cgcourse;
 
 import com.vsu.cgcourse.objreader.ObjReader;
+import com.vsu.cgcourse.objwriter.ObjWriter;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -22,7 +23,6 @@ import com.vsu.cgcourse.renderengine.Camera;
 import com.vsu.cgcourse.renderengine.RenderEngine;
 
 public class GuiController {
-
     final private float TRANSLATION = 0.5F;
 
     @FXML
@@ -33,7 +33,7 @@ public class GuiController {
 
     private Mesh mesh = null;
 
-    private Camera camera = new Camera(
+    private final Camera camera = new Camera(
             new Vector3f(0, 00, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
@@ -70,7 +70,7 @@ public class GuiController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Model (*.obj)", "*.obj"));
         fileChooser.setTitle("Load Model");
 
-        File file = fileChooser.showOpenDialog((Stage) canvas.getScene().getWindow());
+        File file = fileChooser.showOpenDialog(canvas.getScene().getWindow());
         if (file == null) {
             return;
         }
@@ -80,9 +80,19 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
-            // todo: обработка ошибок
         } catch (IOException exception) {
+            // todo: обработка ошибок
+        }
+    }
 
+    public void onSaveModelMenuItemClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".obj", "*.obj"));
+        fileChooser.setTitle("Save model");
+
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+        if (file != null) {
+            ObjWriter.write(mesh, file);
         }
     }
 
@@ -115,4 +125,5 @@ public class GuiController {
     public void handleCameraDown(ActionEvent actionEvent) {
         camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
     }
+
 }
