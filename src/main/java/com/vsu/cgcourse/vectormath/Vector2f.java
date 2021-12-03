@@ -19,4 +19,12 @@ public class Vector2f extends Vector {
         coordinates[0] = x;
         coordinates[1] = y;
     }
+
+    public float getX() {
+        return coordinates[0];
+    }
+
+    public float getY() {
+        return coordinates[1];
+    }
 }
