@@ -1,6 +1,7 @@
 package com.vsu.cgcourse;
 
 import com.vsu.cgcourse.objreader.ObjReader;
+import com.vsu.cgcourse.objwriter.ObjWriter;
 import com.vsu.cgcourse.renderengine.Transformations;
 import com.vsu.cgcourse.vectormath.Matrix3x3;
 import com.vsu.cgcourse.vectormath.Matrix4x4;
@@ -27,7 +28,6 @@ import com.vsu.cgcourse.renderengine.RenderEngine;
 import static com.vsu.cgcourse.renderengine.GraphicConveyor.*;
 
 public class GuiController {
-
     final private float TRANSLATION = 0.5F;
 
     double alpha = 0.01;
@@ -80,7 +80,7 @@ public class GuiController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Model (*.obj)", "*.obj"));
         fileChooser.setTitle("Load Model");
 
-        File file = fileChooser.showOpenDialog((Stage) canvas.getScene().getWindow());
+        File file = fileChooser.showOpenDialog(canvas.getScene().getWindow());
         if (file == null) {
             return;
         }
@@ -90,9 +90,19 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
-            // todo: обработка ошибок
         } catch (IOException exception) {
+            // todo: обработка ошибок
+        }
+    }
 
+    public void onSaveModelMenuItemClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".obj", "*.obj"));
+        fileChooser.setTitle("Save model");
+
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+        if (file != null) {
+            ObjWriter.write(mesh, file);
         }
     }
 
