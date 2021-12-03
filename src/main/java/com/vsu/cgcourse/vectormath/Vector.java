@@ -190,11 +190,19 @@ public class Vector {
         return vector1.scalarProduct(vector2);
     }
 
+    //Устанавливает значение этого вектора как результат сложения этого вектора и v1
     public void add(Vector v1) {
         coordinates = addition(v1).coordinates;
     }
 
+    //Устанавливает значение этого вектора как результат вычитания векторов v1 и v2
     public void sub(Vector v1, Vector v2) {
         coordinates = subtraction(v1, v2).coordinates;
     }
+
+    //Устанавливает значение этого вектора как результат нормализации этого вектора
+    public void normalize() {
+        coordinates = normalization(this).coordinates;
+    }
+
 }

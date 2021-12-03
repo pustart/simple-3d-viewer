@@ -46,31 +46,14 @@ public class Vector3f extends Vector {
         return vector1.crossProduct(vector2);
     }
 
-    @Override
-    public Vector normalization() {
-        return super.normalization();
-    }
-
-    @Override
-    public void add(Vector v1) {
-        super.add(v1);
-    }
-
-    @Override
-    public void sub(Vector v1, Vector v2) {
-        super.sub(v1, v2);
-    }
-
+    //Устанавливает значение этого вектора как результат кросс-произведения векторов v1 и v2
     public void cross(Vector3f v1, Vector3f v2) {
         coordinates = crossProduct(v1, v2).coordinates;
     }
 
+    //Возвращает точечное произведение этого вектора и вектора v1.
     public final float dot(Vector3f v1) {
         return coordinates[0] * v1.getX() + coordinates[1] * v1.getY() + coordinates[2] * v1.getZ();
-    }
-
-    public void normalize() {
-        coordinates = normalization(this).coordinates;
     }
 
     public float getX() {
