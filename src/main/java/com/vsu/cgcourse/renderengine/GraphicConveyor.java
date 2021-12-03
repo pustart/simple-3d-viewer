@@ -58,10 +58,10 @@ public class GraphicConveyor {
         final float y = (vertex.getX() * matrix.getElement(0,1)) + (vertex.getY() * matrix.getElement(1,1)) + (vertex.getZ() * matrix.getElement(2,1)) + matrix.getElement(3,1);
         final float z = (vertex.getX() * matrix.getElement(0,2)) + (vertex.getY() * matrix.getElement(1,2)) + (vertex.getZ() * matrix.getElement(2,2)) + matrix.getElement(3,2);
         final float w = (vertex.getX() * matrix.getElement(0,3)) + (vertex.getY() * matrix.getElement(1,3)) + (vertex.getZ() * matrix.getElement(2,3)) + matrix.getElement(3,3);*/
-        final float x = (matrix.getElement(0,0) * vertex.getX()) + (matrix.getElement(0,1) * vertex.getY()) + (matrix.getElement(0,1) * vertex.getZ()) + matrix.getElement(0,3);
+        final float x = (matrix.getElement(0,0) * vertex.getX()) + (matrix.getElement(0,1) * vertex.getY()) + (matrix.getElement(0,2) * vertex.getZ()) + matrix.getElement(0,3);
         final float y = (matrix.getElement(1,0) * vertex.getX()) + (matrix.getElement(1,1) * vertex.getY()) + (matrix.getElement(1,2) * vertex.getZ()) + matrix.getElement(1,3);
-        final float z = (matrix.getElement(2,0) * vertex.getX()) + (matrix.getElement(2,1) * vertex.getY()) + (matrix.getElement(2,1) * vertex.getZ()) + matrix.getElement(2,3);
-        final float w = (matrix.getElement(3,0) * vertex.getX()) + (matrix.getElement(3,1) * vertex.getY()) + (matrix.getElement(3,1) * vertex.getZ()) + matrix.getElement(3,3);
+        final float z = (matrix.getElement(2,0) * vertex.getX()) + (matrix.getElement(2,1) * vertex.getY()) + (matrix.getElement(2,2) * vertex.getZ()) + matrix.getElement(2,3);
+        final float w = (matrix.getElement(3,0) * vertex.getX()) + (matrix.getElement(3,1) * vertex.getY()) + (matrix.getElement(3,2) * vertex.getZ()) + matrix.getElement(3,3);
 
         return new Vector3f(x / w, y / w, z / w);
     }
