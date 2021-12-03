@@ -45,19 +45,19 @@ public class GraphicConveyor {
             final float farPlane) {
         Matrix4x4 result = new Matrix4x4();
         float tangentMinusOnDegree = (float) (1.0F / (Math.tan(fov * 0.5F)));
-        result.setM00(tangentMinusOnDegree / aspectRatio);
-        result.setM11(tangentMinusOnDegree);
-        result.setM22((farPlane + nearPlane) / (farPlane - nearPlane));
-        result.setM23(1.0F);
-        result.setM032(2 * (nearPlane * farPlane) / (nearPlane - farPlane));
+        result.setElement(0, 0, tangentMinusOnDegree / aspectRatio);
+        result.setElement(1, 1, tangentMinusOnDegree);
+        result.setElement(2, 2, (farPlane + nearPlane) / (farPlane - nearPlane));
+        result.setElement(2, 3, 1.0F);
+        result.setElement(3, 2, 2 * (nearPlane * farPlane) / (nearPlane - farPlane));
         return result;
     }
 
-    public static Vector3f multiplyMatrix4ByVector3 (final Matrix4x4 matrix, final Vector3f vertex) {
-        final float x = (vertex.getX() * matrix.getM00()) + (vertex.getY() * matrix.getM10()) + (vertex.getZ() * matrix.getM20()) + matrix.getM30();
-        final float y = (vertex.getX() * matrix.getM01()) + (vertex.getY() * matrix.getM11()) + (vertex.getZ() * matrix.getM21()) + matrix.getM31();
-        final float z = (vertex.getX() * matrix.getM02()) + (vertex.getY() * matrix.getM12()) + (vertex.getZ() * matrix.getM22()) + matrix.getM32();
-        final float w = (vertex.getX() * matrix.getM03()) + (vertex.getY() * matrix.getM13()) + (vertex.getZ() * matrix.getM23()) + matrix.getM33();
+    public static Vector3f multiplyMatrix4ByVector3(final Matrix4x4 matrix, final Vector3f vertex) {
+        final float x = (vertex.getX() * matrix.getElement(0,0)) + (vertex.getY() * matrix.getElement(1,0)) + (vertex.getZ() * matrix.getElement(2,0)) + matrix.getElement(3,0);
+        final float y = (vertex.getX() * matrix.getElement(0,1)) + (vertex.getY() * matrix.getElement(1,1)) + (vertex.getZ() * matrix.getElement(2,1)) + matrix.getElement(3,1);
+        final float z = (vertex.getX() * matrix.getElement(0,2)) + (vertex.getY() * matrix.getElement(1,2)) + (vertex.getZ() * matrix.getElement(2,2)) + matrix.getElement(3,2);
+        final float w = (vertex.getX() * matrix.getElement(0,3)) + (vertex.getY() * matrix.getElement(1,3)) + (vertex.getZ() * matrix.getElement(2,3)) + matrix.getElement(3,3);
         return new Vector3f(x / w, y / w, z / w);
     }
 
