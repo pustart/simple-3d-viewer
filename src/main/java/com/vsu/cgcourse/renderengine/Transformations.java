@@ -64,20 +64,20 @@ public class Transformations {
     }
 
     public void translation3x3(Matrix3x3 matrix) {
-        final int size = this.original.vertices.size();
+        final int size = this.original.getVertices().size();
         for (int vertexInd = 0; vertexInd < size; vertexInd++) {
-            Vector3f temp = this.original.vertices.get(vertexInd);
+            Vector3f temp = this.original.getVertices().get(vertexInd);
 
-            this.original.vertices.get(vertexInd).setCoordinates(multiplyMatrix3ByVector3(matrix, temp).getCoordinates());
+            this.original.getVertices().get(vertexInd).setCoordinates(multiplyMatrix3ByVector3(matrix, temp).getCoordinates());
         }
     }
 
     public void translation4x4(Matrix4x4 matrix) {
-        final int size = this.original.vertices.size();
+        final int size = this.original.getVertices().size();
         for (int vertexInd = 0; vertexInd < size; vertexInd++) {
-            Vector3f temp = this.original.vertices.get(vertexInd);
+            Vector3f temp = this.original.getVertices().get(vertexInd);
 
-            this.original.vertices.get(vertexInd).setCoordinates(multiplyMatrix4ByVector3(matrix, temp).getCoordinates());
+            this.original.getVertices().get(vertexInd).setCoordinates(multiplyMatrix4ByVector3(matrix, temp).getCoordinates());
         }
     }
 
