@@ -14,15 +14,12 @@ public class RenderEngine {
             final Mesh mesh,
             final int width,
             final int height)
-    {   //tod: translateRotateScale
+    {
         Matrix4x4 modelMatrix = rotateScaleTranslate();
         Matrix4x4 viewMatrix = camera.getViewMatrix();
         Matrix4x4 projectionMatrix = camera.getProjectionMatrix();
-        //this creates our MVP matrix
-        //todo: we need a reversed option for vector-column: PVM
-        /*Matrix4x4 modelViewProjectionMatrix = new Matrix4x4(modelMatrix.getValues());
-        modelViewProjectionMatrix.mul(viewMatrix);
-        modelViewProjectionMatrix.mul(projectionMatrix);*/
+        //old: MVP matrix multiplication
+        //new: makes reversed matrix multiplication for vector-column: PVM
         Matrix4x4 modelViewProjectionMatrix = new Matrix4x4(projectionMatrix.transposition().getValues());
         modelViewProjectionMatrix.mul(viewMatrix.transposition());
         modelViewProjectionMatrix.mul(modelMatrix.transposition());
