@@ -194,6 +194,7 @@ public class Matrix {
         return new Matrix(createUnitaryTwoDimensionalArray(dimension));
     }
 
+    //Устанавливает значение этой матрицы как умножение этой матрицы на матрицу m1.
     public void mul(Matrix m1) {
         final int size = m1.values.length;
         float[][] result = new float[size][size];
@@ -207,5 +208,25 @@ public class Matrix {
             }
         }
         values = result;
+    }
+
+    public float getElement(int row, int column) {
+        final int size = values.length;
+        if (row < size) {
+            if (column < size || column > 0)
+                return values[row][column];
+            else throw new ArrayIndexOutOfBoundsException("Недопустимое значение column");
+        } else
+            throw new ArrayIndexOutOfBoundsException("Недопустимое значение row");
+    }
+
+    public void setElement(int row, int column, float value) {
+        final int size = values.length;
+        if (row < size) {
+            if (column < size || column > 0)
+                values[row][column] = value;
+            else throw new ArrayIndexOutOfBoundsException("Недопустимое значение column");
+        } else
+            throw new ArrayIndexOutOfBoundsException("Недопустимое значение row");
     }
 }
