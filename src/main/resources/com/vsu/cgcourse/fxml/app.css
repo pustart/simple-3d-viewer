@@ -1,0 +1,16 @@
+#viewport{
+    -fx-background-color: #222;
+}
+#canvas{
+    -fx-background-color: #444;
+}
+#menu-bar, #hbox, .context-menu, .menu-item{
+    -fx-background-color: #151515;
+}
+.menu-button:hover, .menu-button:focused, .menu-button:showing, .menu-item:focused, .menu-item:hovered{
+    -fx-background-color: #333;
+}
+
+#menu .label{
+    -fx-text-fill: #818181;
+}
