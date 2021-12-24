@@ -117,31 +117,37 @@ public class GuiController {
 
     @FXML
     public void handleCameraForward(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(0, 0, -TRANSLATION)).getCoordinates()));
         camera.movePosition(new Vector3f(0, 0, -TRANSLATION));
     }
 
     @FXML
     public void handleCameraBackward(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(0, 0, TRANSLATION)).getCoordinates()));
         camera.movePosition(new Vector3f(0, 0, TRANSLATION));
     }
 
     @FXML
     public void handleCameraLeft(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(TRANSLATION, 0, 0)).getCoordinates()));
         camera.movePosition(new Vector3f(TRANSLATION, 0, 0));
     }
 
     @FXML
     public void handleCameraRight(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(-TRANSLATION, 0, 0)).getCoordinates()));
         camera.movePosition(new Vector3f(-TRANSLATION, 0, 0));
     }
 
     @FXML
     public void handleCameraUp(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(0, TRANSLATION, 0)).getCoordinates()));
         camera.movePosition(new Vector3f(0, TRANSLATION, 0));
     }
 
     @FXML
     public void handleCameraDown(ActionEvent actionEvent) {
+        camera.setTarget(new Vector3f(camera.getTarget().addition(new Vector3f(0, -TRANSLATION, 0)).getCoordinates()));
         camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
     }
 
