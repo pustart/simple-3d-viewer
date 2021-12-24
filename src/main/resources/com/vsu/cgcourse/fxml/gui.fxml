@@ -58,6 +58,26 @@
                     <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraTurnDown" text="Turn Down">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="Z" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraTurnUp" text="Turn Down">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="X" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraTurnLeft" text="Turn Down">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraTurnRight" text="Turn Down">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="V" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
         </Menu>
         <Menu mnemonicParsing="false" text="Model Options">
             <MenuItem mnemonicParsing="false" onAction="#handleModelXForward" text="Rotate X +">

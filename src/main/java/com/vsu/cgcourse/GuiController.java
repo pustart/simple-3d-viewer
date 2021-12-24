@@ -241,4 +241,34 @@ public class GuiController {
     public void handleOffsetMinusModelZ(ActionEvent actionEvent) {
         transformations.offsetZ(-TRANSLATION);
     }
+
+    @FXML
+    public void handleCameraTurnDown(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
+    }
+
+    @FXML
+    public void handleCameraTurnUp(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(0, TRANSLATION, 0));
+    }
+
+    @FXML
+    public void handleCameraTurnLeft(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(TRANSLATION, 0, 0));
+    }
+
+    @FXML
+    public void handleCameraTurnRight(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(-TRANSLATION, 0, 0));
+    }
+
+    /*@FXML
+    public void handleCameraTurnDown(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
+    }
+
+    @FXML
+    public void handleCameraTurnDown(ActionEvent actionEvent) {
+        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
+    }*/
 }
