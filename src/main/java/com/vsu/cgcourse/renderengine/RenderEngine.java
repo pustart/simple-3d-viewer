@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import com.vsu.cgcourse.vectormath.*;
 import com.vsu.cgcourse.model.Mesh;
+import javafx.scene.paint.Color;
+
 import static com.vsu.cgcourse.renderengine.GraphicConveyor.*;
 
 public class RenderEngine {
@@ -36,6 +38,7 @@ public class RenderEngine {
             }
 
             for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
+                graphicsContext.setStroke(Color.rgb(122,102,88));
                 graphicsContext.strokeLine(
                         resultPoints.get(vertexInPolygonInd - 1).getX(),
                         resultPoints.get(vertexInPolygonInd - 1).getY(),
@@ -44,6 +47,7 @@ public class RenderEngine {
             }
 
             if (nVerticesInPolygon > 0)
+                graphicsContext.setStroke(Color.rgb(122,102,88));
                 graphicsContext.strokeLine(
                         resultPoints.get(nVerticesInPolygon - 1).getX(),
                         resultPoints.get(nVerticesInPolygon - 1).getY(),

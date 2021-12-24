@@ -45,7 +45,6 @@ public class ObjReader {
             }
         }
 
-        //проверка на нормали после полигонов
         return new Mesh(vertices, textureVertices, normals, polygons);
     }
 }
