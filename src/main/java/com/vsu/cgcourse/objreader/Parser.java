@@ -16,10 +16,6 @@ public class Parser {
     }
 
     protected static Vector2f parseTextureVertex(final ArrayList<String> wordsInLineWithoutToken, int lineInd) {
-//        if (wordsInLineWithoutToken.size() > 2) {
-//            throw new ObjReaderException("Too much arguments", lineInd);
-//        }
-
         try {
             return new Vector2f(
                     Float.parseFloat(wordsInLineWithoutToken.get(0)),
