@@ -1,9 +1,8 @@
 package com.vsu.cgcourse;
 
 import com.vsu.cgcourse.objreader.ObjReader;
+import com.vsu.cgcourse.objwriter.ObjWriter;
 import com.vsu.cgcourse.renderengine.Transformations;
-import com.vsu.cgcourse.vectormath.Matrix3x3;
-import com.vsu.cgcourse.vectormath.Matrix4x4;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -11,7 +10,6 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import java.nio.file.Files;
@@ -24,10 +22,7 @@ import com.vsu.cgcourse.model.Mesh;
 import com.vsu.cgcourse.renderengine.Camera;
 import com.vsu.cgcourse.renderengine.RenderEngine;
 
-import static com.vsu.cgcourse.renderengine.GraphicConveyor.*;
-
 public class GuiController {
-
     final private float TRANSLATION = 0.5F;
 
     double alpha = 0.01;
@@ -38,23 +33,23 @@ public class GuiController {
     @FXML
     private Canvas canvas;
 
-    private Mesh mesh = null;
+    private Mesh meshToTransform = null;
+    private Mesh originalMesh = null;
 
-    private Transformations transformations = new Transformations(mesh);
 
-    private Camera camera = new Camera(
+    private Transformations transformations;
+
+    private final Camera camera = new Camera(
             new Vector3f(0, 00, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
-
-    private Timeline timeline;
 
     @FXML
     private void initialize() {
         anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> canvas.setWidth(newValue.doubleValue()));
         anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
 
-        timeline = new Timeline();
+        Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
 
         KeyFrame frame = new KeyFrame(Duration.millis(15), event -> {
@@ -64,9 +59,9 @@ public class GuiController {
             canvas.getGraphicsContext2D().clearRect(0, 0, width, height);
             camera.setAspectRatio((float) (width / height));
 
-            if (mesh != null) {
-                transformations.setOriginal(mesh);
-                RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
+            if (meshToTransform != null) {
+                transformations = new Transformations(originalMesh, meshToTransform);
+                RenderEngine.render(canvas.getGraphicsContext2D(), camera, transformations.getTransformed(), (int) width, (int) height);
             }
         });
 
@@ -80,7 +75,7 @@ public class GuiController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Model (*.obj)", "*.obj"));
         fileChooser.setTitle("Load Model");
 
-        File file = fileChooser.showOpenDialog((Stage) canvas.getScene().getWindow());
+        File file = fileChooser.showOpenDialog(canvas.getScene().getWindow());
         if (file == null) {
             return;
         }
@@ -89,10 +84,34 @@ public class GuiController {
 
         try {
             String fileContent = Files.readString(fileName);
-            mesh = ObjReader.read(fileContent);
-            // todo: обработка ошибок
+            meshToTransform = ObjReader.read(fileContent);
+            originalMesh = ObjReader.read(fileContent);
         } catch (IOException exception) {
+            // todo: обработка ошибок
+        }
+    }
 
+    @FXML
+    public void onSaveOriginalModelMenuItemClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".obj", "*.obj"));
+        fileChooser.setTitle("Save model");
+
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+        if (file != null && meshToTransform != null) {
+            ObjWriter.write(transformations.getOriginal(), file);
+        }
+    }
+
+    @FXML
+    public void onSaveModifiedModelMenuItemClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".obj", "*.obj"));
+        fileChooser.setTitle("Save model");
+
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+        if (file != null && meshToTransform != null) {
+            ObjWriter.write(transformations.getTransformed(), file);
         }
     }
 

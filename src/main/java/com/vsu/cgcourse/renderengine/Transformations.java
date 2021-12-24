@@ -10,12 +10,12 @@ import static com.vsu.cgcourse.renderengine.GraphicConveyor.multiplyMatrix4ByVec
 
 public class Transformations {
 
-    private Mesh original;
-    //private final Mesh translated = original;
+    private final Mesh original;
+    private final Mesh transformed;
 
-    public Transformations(Mesh original) {
+    public Transformations(Mesh original, Mesh meshToTransform) {
         this.original = original;
-        //this.translated = original;
+        this.transformed = meshToTransform;
     }
 
     public void rotateAboutX(double alpha) {
@@ -64,24 +64,28 @@ public class Transformations {
     }
 
     public void translation3x3(Matrix3x3 matrix) {
-        final int size = this.original.vertices.size();
+        final int size = this.transformed.getVertices().size();
         for (int vertexInd = 0; vertexInd < size; vertexInd++) {
-            Vector3f temp = this.original.vertices.get(vertexInd);
+            Vector3f temp = this.transformed.getVertices().get(vertexInd);
 
-            this.original.vertices.get(vertexInd).setCoordinates(multiplyMatrix3ByVector3(matrix, temp).getCoordinates());
+            this.transformed.getVertices().get(vertexInd).setCoordinates(multiplyMatrix3ByVector3(matrix, temp).getCoordinates());
         }
     }
 
     public void translation4x4(Matrix4x4 matrix) {
-        final int size = this.original.vertices.size();
+        final int size = this.transformed.getVertices().size();
         for (int vertexInd = 0; vertexInd < size; vertexInd++) {
-            Vector3f temp = this.original.vertices.get(vertexInd);
+            Vector3f temp = this.transformed.getVertices().get(vertexInd);
 
-            this.original.vertices.get(vertexInd).setCoordinates(multiplyMatrix4ByVector3(matrix, temp).getCoordinates());
+            this.transformed.getVertices().get(vertexInd).setCoordinates(multiplyMatrix4ByVector3(matrix, temp).getCoordinates());
         }
     }
 
-    public void setOriginal(Mesh original) {
-        this.original = original;
+    public Mesh getOriginal() {
+        return original;
+    }
+
+    public Mesh getTransformed() {
+        return transformed;
     }
 }
