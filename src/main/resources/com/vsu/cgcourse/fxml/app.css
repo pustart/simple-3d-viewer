@@ -14,3 +14,14 @@
 #menu .label{
     -fx-text-fill: #818181;
 }
+
+#menu-panel {
+    -fx-background-color: #818181;
+    -fx-background-radius: 6;
+    -fx-background-insets: 0, 0 1 1 0;
+}
+
+#border-panel {
+    -fx-background-color: #109070;
+    -fx-height: 30;
+}
