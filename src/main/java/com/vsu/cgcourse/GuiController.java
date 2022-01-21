@@ -1,5 +1,6 @@
 package com.vsu.cgcourse;
 
+import com.vsu.cgcourse.model.Triangulation;
 import com.vsu.cgcourse.objreader.ObjReader;
 import com.vsu.cgcourse.objwriter.ObjWriter;
 import com.vsu.cgcourse.renderengine.Transformations;
@@ -251,5 +252,10 @@ public class GuiController {
             optionsPanel.setVisible(false);
             showPanelFlag = false;
         }
+    }
+
+    @FXML
+    public void triangulateModel(ActionEvent actionEvent) {
+        meshToTransform.setPolygons(Triangulation.polygonsTriangulation(meshToTransform.getPolygons()));
     }
 }

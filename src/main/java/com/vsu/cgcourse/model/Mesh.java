@@ -8,7 +8,7 @@ public class Mesh {
     private ArrayList<Vector3f> vertices;
     private ArrayList<Vector2f> textureVertices;
     private ArrayList<Vector3f> normals;
-    private final ArrayList<Polygon> polygons;
+    private ArrayList<Polygon> polygons;
 
     public Mesh(ArrayList<Vector3f> vertices,
                  ArrayList<Vector2f> textureVertices,
@@ -34,6 +34,10 @@ public class Mesh {
 
     public ArrayList<Polygon> getPolygons() {
         return polygons;
+    }
+
+    public void setPolygons(ArrayList<Polygon> polygons) {
+        this.polygons = polygons;
     }
 
     public void setVertices(ArrayList<Vector3f> vertices) {
