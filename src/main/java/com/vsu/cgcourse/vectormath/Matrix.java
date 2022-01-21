@@ -229,4 +229,64 @@ public class Matrix {
         } else
             throw new ArrayIndexOutOfBoundsException("Недопустимое значение row");
     }
+
+    public float determinant() {
+        return determinant(values, values.length);
+    }
+
+    private float determinant(float[][] matrix, int dimension) {
+        float result = 0;
+        if (dimension == 1) {
+            result = matrix[0][0];
+        } else if (dimension == 2) {
+            result = matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
+        } else {
+            for (int column = 0; column < dimension; column++) {
+                result += Math.pow(-1, column + 2) * matrix[0][column] * determinant(subMatrix(dimension, column), dimension - 1);
+            }
+        }
+        return result;
+    }
+
+    private float[][] subMatrix(int dimension, int column) {
+        float[][] subMatrix = new float[dimension - 1][dimension - 1];
+        for (int i = 1; i < dimension; i++) {
+            int newArrayColumn = 0;
+            for (int j = 0; j < dimension; j++) {
+                if (j == column) {
+                    continue;
+                }
+                subMatrix[i - 1][newArrayColumn] = values[i][j];
+                newArrayColumn++;
+            }
+        }
+        return subMatrix;
+    }
+
+    public void mul(float number) {
+        float[][] result = new float[values.length][values.length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result.length; j++) {
+                result[i][j] = getElement(i, j) * number;
+            }
+        }
+        setValues(result);
+    }
+
+    public Matrix mul(Matrix matrix, float number) {
+        float[][] result = new float[matrix.values.length][matrix.values.length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result.length; j++) {
+                result[i][j] = matrix.getElement(i, j) * number;
+            }
+        }
+        return new Matrix(result);
+    }
+
+    public Matrix invert() {
+        Matrix result = new Matrix();
+        result.setValues(mul(transposition(), 1 / determinant()).values);
+        return result;
+    }
+
 }
