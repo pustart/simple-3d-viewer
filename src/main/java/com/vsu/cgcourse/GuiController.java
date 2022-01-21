@@ -5,12 +5,14 @@ import com.vsu.cgcourse.objwriter.ObjWriter;
 import com.vsu.cgcourse.renderengine.Transformations;
 import com.vsu.cgcourse.vectormath.Matrix3x3;
 import com.vsu.cgcourse.vectormath.Matrix4x4;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
@@ -19,6 +21,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.vsu.cgcourse.vectormath.Vector3f;
 
 import com.vsu.cgcourse.model.Mesh;
@@ -34,6 +39,8 @@ public class GuiController {
 
     @FXML
     AnchorPane anchorPane;
+
+    private final Set<KeyCode> pressedKeys = new HashSet<>();
 
     @FXML
     private Canvas canvas;
@@ -53,6 +60,15 @@ public class GuiController {
     private void initialize() {
         anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> canvas.setWidth(newValue.doubleValue()));
         anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
+       /* anchorPane.setOnScroll(new EventHandler<ScrollEvent>(){
+
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+                double deltaY = scrollEvent.getDeltaY();
+                camera.movePosition(new Vector3f(0, 0, (float)deltaY/5));
+
+            }
+        });*/
 
         timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -63,9 +79,13 @@ public class GuiController {
 
             canvas.getGraphicsContext2D().clearRect(0, 0, width, height);
             camera.setAspectRatio((float) (width / height));
+            enableMouseScroll();
+            //enableKeys();
 
             if (mesh != null) {
+
                 transformations.setOriginal(mesh);
+
                 RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
             }
         });
@@ -74,6 +94,31 @@ public class GuiController {
         timeline.play();
     }
 
+    EventHandler filter = new EventHandler<InputEvent>() {
+        public void handle(InputEvent event) {
+            System.out.println("Filtering out event " + event.getEventType());
+            event.consume();
+        }
+    };
+
+    private void enableMouseScroll(){
+        anchorPane.setOnScroll(new EventHandler<ScrollEvent>(){
+
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+                double deltaY = scrollEvent.getDeltaY();
+                camera.movePosition(new Vector3f(0, 0, (float)deltaY/5));
+            }
+        });
+    }
+    private void enableKeys(){
+        anchorPane.setOnKeyPressed(k->{
+            pressedKeys.add(k.getCode());
+        });
+        anchorPane.setOnKeyReleased(k->{
+            pressedKeys.remove(k.getCode());
+        });
+    }
     @FXML
     private void onOpenModelMenuItemClick() {
         FileChooser fileChooser = new FileChooser();
@@ -139,7 +184,44 @@ public class GuiController {
 
     @FXML
     public void handleModelXForward(ActionEvent actionEvent) {
-        transformations.rotateAboutX(alpha);
+        //transformations.rotateAboutX(alpha);
+
+        anchorPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, e-> {
+            transformations.rotateAboutX(e.getSceneX()/5);
+        });
+
+        /*anchorPane.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if(*//*pressedKeys.contains(KeyCode.X)*//* keyEvent.isControlDown()){
+
+
+            }
+       });*/
+
+        /*anchorPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                anchorPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, e ->{
+                    //camera.movePosition();
+                    transformations.rotateAboutX(e.getSceneX()/5);
+                });
+            }
+        });*/
+
+
+            //anchorPane.removeEventFilter(e);
+        /*anchorPane.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(keyEvent.getCode() == KeyCode.X){
+                    anchorPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, e ->{
+                        //camera.movePosition();
+                        transformations.rotateAboutX(e.getSceneX()/5);
+                    });
+                }
+                keyEvent.consume();
+            }
+        });*/
+
     }
 
     @FXML
@@ -149,7 +231,11 @@ public class GuiController {
 
     @FXML
     public void handleModelYLeft(ActionEvent actionEvent) {
-        transformations.rotateAboutY(alpha);
+        //transformations.rotateAboutY(alpha);
+        anchorPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, e ->{
+            //camera.movePosition();
+            transformations.rotateAboutY(e.getSceneY()/5);
+        });
     }
 
     @FXML
@@ -175,6 +261,11 @@ public class GuiController {
     @FXML
     public void handleCompressModelX(ActionEvent actionEvent) {
         transformations.scaleX(TRANSLATION);
+        /*anchorPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, e ->{
+            //camera.movePosition();
+            float scale =0; scale += (float) e.getSceneY();
+            transformations.scaleX(scale);
+        });*/
     }
 
     @FXML

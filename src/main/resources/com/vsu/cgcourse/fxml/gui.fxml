@@ -54,10 +54,10 @@
                 </accelerator>
             </MenuItem>
         </Menu>
-        <Menu mnemonicParsing="false" text="Model Options">
+        <Menu id="menu" mnemonicParsing="false" text="Model Options">
             <MenuItem mnemonicParsing="false" onAction="#handleModelXForward" text="Rotate X +">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="T"/>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="X"/>
                 </accelerator>
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#handleModelXBackward" text="Rotate X -">

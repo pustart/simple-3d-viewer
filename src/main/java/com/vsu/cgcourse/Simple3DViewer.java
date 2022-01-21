@@ -1,10 +1,13 @@
 package com.vsu.cgcourse;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -13,6 +16,7 @@ public class Simple3DViewer extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.initStyle(StageStyle.DECORATED);
         AnchorPane viewport = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/gui.fxml")));
 
         Scene scene = new Scene(viewport);
@@ -20,6 +24,8 @@ public class Simple3DViewer extends Application {
         stage.setMinHeight(900);
         viewport.prefWidthProperty().bind(scene.widthProperty());
         viewport.prefHeightProperty().bind(scene.heightProperty());
+
+
 
         stage.setTitle("Simple3DViewer");
         stage.setScene(scene);

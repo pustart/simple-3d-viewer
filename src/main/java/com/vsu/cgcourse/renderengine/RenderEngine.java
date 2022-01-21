@@ -17,6 +17,7 @@ public class RenderEngine {
             final int width,
             final int height)
     {
+        //TODO: in graphicsContest something like setPixel/pixelWriter with our own custom
         Matrix4x4 modelMatrix = rotateScaleTranslate();
         Matrix4x4 viewMatrix = camera.getViewMatrix();
         Matrix4x4 projectionMatrix = camera.getProjectionMatrix();
