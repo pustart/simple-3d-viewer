@@ -172,7 +172,7 @@
         <right>
             <ButtonBar prefHeight="28.0" prefWidth="315.0" BorderPane.alignment="CENTER">
                 <buttons>
-               <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="113.0" onAction="#resetModel" text="Reset model" />
+               <Button mnemonicParsing="false" onAction="#resetModel" text="Reset model" />
                     <Button mnemonicParsing="false" onAction="#triangulateModel" text="Triangulate" />
                     <Button mnemonicParsing="false" onAction="#options" text="Options" />
                 </buttons>

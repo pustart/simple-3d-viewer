@@ -49,16 +49,12 @@ public class GuiController {
     private Mesh meshToTransform = null;
     private Mesh originalMesh = null;
 
-    private Transformations transformations = new Transformations(mesh);
-
     private Transformations transformations;
 
     private final Camera camera = new Camera(
             new Vector3f(0, 00, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
-
-    private Timeline timeline;
 
     @FXML
     private void initialize() {
@@ -93,7 +89,7 @@ public class GuiController {
 
             @Override
             public void handle(ScrollEvent scrollEvent) {
-                double deltaY = scrollEvent.getDeltaY();
+                double deltaY = -scrollEvent.getDeltaY();
                 camera.movePosition(new Vector3f(0, 0, (float) deltaY / 5));
             }
         });
