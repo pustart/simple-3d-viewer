@@ -14,218 +14,225 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="viewport" fx:id="anchorPane" stylesheets="@app.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vsu.cgcourse.GuiController">
-   <BorderPane id="border-panel" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <left>
-          <MenuBar id="menu-bar" stylesheets="@app.css" BorderPane.alignment="CENTER">
-              <Menu id="menu" mnemonicParsing="false" text="File">
-                  <MenuItem mnemonicParsing="false" onAction="#onOpenModelMenuItemClick" text="Load Model">
-                  <accelerator>
-                      <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#onSaveOriginalModelMenuItemClick" text="Save original model">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#onSaveModifiedModelMenuItemClick" text="Save modified model">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-              </Menu>
-              <Menu id="menu" mnemonicParsing="false" text="Camera Options">
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraForward" text="Forward">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="UP" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraBackward" text="Backward">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DOWN" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraLeft" text="Left">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="LEFT" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraRight" text="Right">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="RIGHT" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraUp" text="Up">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCameraDown" text="Down">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-              </Menu>
-              <Menu id="menu" mnemonicParsing="false" text="Model Options">
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelXForward" text="Rotate X +">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelXBackward" text="Rotate X -">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelYLeft" text="Rotate Y +">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelYRight" text="Rotate Y -">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelZRight" text="Rotate Z +">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="Y" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleModelZLeft" text="Rotate Z -">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleStretchModelX" text="Stretch X">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCompressModelX" text="Compress X">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="K" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleStretchModelY" text="Stretch Y">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCompressModelY" text="Compress Y">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="J" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleStretchModelZ" text="Stretch Z">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleCompressModelZ" text="Compress Z">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="U" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelX" text="Offset X+">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelX" text="Offset X-">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelY" text="Offset Y+">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelY" text="Offset Y-">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelZ" text="Offset Z+">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelZ" text="Offset Z-">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-              </Menu>
-            <BorderPane.margin>
-               <Insets />
-            </BorderPane.margin>
-          </MenuBar>
-      </left>
-      <right>
-         <ButtonBar prefHeight="40.0" prefWidth="272.0" BorderPane.alignment="CENTER">
-           <buttons>
-               <Button mnemonicParsing="false" onAction="#triangulateModel" text="Triangulate" />
-               <Button mnemonicParsing="false" onAction="#options" text="Options" />
-           </buttons>
-            <BorderPane.margin>
-               <Insets right="10.0" />
-            </BorderPane.margin>
-         </ButtonBar>
-      </right>
-   </BorderPane>
-          <Canvas id="canvas" fx:id="canvas" AnchorPane.topAnchor="30.0" />
-   <VBox id="menu-panel" fx:id="optionsPanel" opacity="0.86" prefHeight="600.0" prefWidth="240.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
-      <children>
-         <BorderPane prefHeight="40.0" prefWidth="200.0">
-            <center>
-               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="33.0" text="Scale" textFill="WHITE" BorderPane.alignment="CENTER" />
-            </center>
-         </BorderPane>
-         <Label text="X: 0.0" textFill="WHITE">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </Label>
-         <Slider />
-         <Label text="Y: 0.0" textFill="WHITE" />
-         <Slider />
-         <Label text="Z: 0.0" textFill="WHITE" />
-         <Slider />
-         <BorderPane prefHeight="40.0" prefWidth="220.0">
-            <center>
-               <Label text="Rotate" textFill="WHITE" BorderPane.alignment="CENTER" />
-            </center>
-         </BorderPane>
-         <Label text="X: 0.0" textFill="WHITE">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </Label>
-         <Slider />
-         <Label text="Y: 0.0" textFill="WHITE" />
-         <Slider />
-         <Label text="Z: 0.0" textFill="WHITE" />
-         <Slider />
-         <BorderPane prefHeight="40.0" prefWidth="220.0">
-            <center>
-               <Label text="Translate" textFill="WHITE" BorderPane.alignment="CENTER" />
-            </center>
-         </BorderPane>
-         <Label text="X: 0.0" textFill="WHITE">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </Label>
-         <Slider />
-         <Label text="Y: 0.0" textFill="WHITE" />
-         <Slider />
-         <Label text="Z: 0.0" textFill="WHITE" />
-         <Slider />
-      </children>
-      <padding>
-         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-      </padding></VBox>
+<AnchorPane id="viewport" fx:id="anchorPane" prefHeight="650.0" prefWidth="649.0" stylesheets="@app.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vsu.cgcourse.GuiController">
+    <BorderPane id="border-panel" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <left>
+            <MenuBar id="menu-bar" stylesheets="@app.css" BorderPane.alignment="CENTER">
+                <Menu id="menu" mnemonicParsing="false" text="File">
+                    <MenuItem mnemonicParsing="false" onAction="#onOpenModelMenuItemClick" text="Load Model">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#onSaveOriginalModelMenuItemClick" text="Save original model">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#onSaveModifiedModelMenuItemClick" text="Save modified model">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                </Menu>
+                <Menu id="menu" mnemonicParsing="false" text="Camera Options">
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraForward" text="Forward">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="UP" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraBackward" text="Backward">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DOWN" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraLeft" text="Left">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="LEFT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraRight" text="Right">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="RIGHT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraUp" text="Up">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCameraDown" text="Down">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                </Menu>
+                <Menu id="menu" mnemonicParsing="false" text="Model Options">
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelXForward" text="Rotate X +">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelXBackward" text="Rotate X -">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelYLeft" text="Rotate Y +">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelYRight" text="Rotate Y -">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelZRight" text="Rotate Z +">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="Y" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleModelZLeft" text="Rotate Z -">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleStretchModelX" text="Stretch X">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCompressModelX" text="Compress X">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="K" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleStretchModelY" text="Stretch Y">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCompressModelY" text="Compress Y">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="J" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleStretchModelZ" text="Stretch Z">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleCompressModelZ" text="Compress Z">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="U" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelX" text="Offset X+">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelX" text="Offset X-">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelY" text="Offset Y+">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelY" text="Offset Y-">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetPlusModelZ" text="Offset Z+">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleOffsetMinusModelZ" text="Offset Z-">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#resetModel" text="Reset model">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="DIGIT0" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                </Menu>
+                <BorderPane.margin>
+                    <Insets />
+                </BorderPane.margin>
+            </MenuBar>
+        </left>
+        <right>
+            <ButtonBar prefHeight="28.0" prefWidth="315.0" BorderPane.alignment="CENTER">
+                <buttons>
+               <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="113.0" onAction="#resetModel" text="Reset model" />
+                    <Button mnemonicParsing="false" onAction="#triangulateModel" text="Triangulate" />
+                    <Button mnemonicParsing="false" onAction="#options" text="Options" />
+                </buttons>
+                <BorderPane.margin>
+                    <Insets right="10.0" />
+                </BorderPane.margin>
+            </ButtonBar>
+        </right>
+    </BorderPane>
+    <Canvas id="canvas" fx:id="canvas" AnchorPane.topAnchor="30.0" />
+    <VBox id="menu-panel" fx:id="optionsPanel" opacity="0.86" prefHeight="600.0" prefWidth="240.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+        <children>
+            <BorderPane prefHeight="40.0" prefWidth="200.0">
+                <center>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="33.0" text="Scale" textFill="WHITE" BorderPane.alignment="CENTER" />
+                </center>
+            </BorderPane>
+            <Label text="X: 0.0" textFill="WHITE">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </Label>
+            <Slider />
+            <Label text="Y: 0.0" textFill="WHITE" />
+            <Slider />
+            <Label text="Z: 0.0" textFill="WHITE" />
+            <Slider />
+            <BorderPane prefHeight="40.0" prefWidth="220.0">
+                <center>
+                    <Label text="Rotate" textFill="WHITE" BorderPane.alignment="CENTER" />
+                </center>
+            </BorderPane>
+            <Label text="X: 0.0" textFill="WHITE">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </Label>
+            <Slider />
+            <Label text="Y: 0.0" textFill="WHITE" />
+            <Slider />
+            <Label text="Z: 0.0" textFill="WHITE" />
+            <Slider />
+            <BorderPane prefHeight="40.0" prefWidth="220.0">
+                <center>
+                    <Label text="Translate" textFill="WHITE" BorderPane.alignment="CENTER" />
+                </center>
+            </BorderPane>
+            <Label text="X: 0.0" textFill="WHITE">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </Label>
+            <Slider />
+            <Label text="Y: 0.0" textFill="WHITE" />
+            <Slider />
+            <Label text="Z: 0.0" textFill="WHITE" />
+            <Slider />
+        </children>
+        <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+        </padding>
+    </VBox>
 </AnchorPane>

@@ -191,7 +191,7 @@ public class GuiController {
 
     @FXML
     public void handleStretchModelX(ActionEvent actionEvent) {
-        transformations.scaleX(1/TRANSLATION);
+        transformations.scaleX(1 / TRANSLATION);
     }
 
     @FXML
@@ -201,7 +201,7 @@ public class GuiController {
 
     @FXML
     public void handleStretchModelY(ActionEvent actionEvent) {
-        transformations.scaleY(1/TRANSLATION);
+        transformations.scaleY(1 / TRANSLATION);
     }
 
     @FXML
@@ -211,7 +211,7 @@ public class GuiController {
 
     @FXML
     public void handleStretchModelZ(ActionEvent actionEvent) {
-        transformations.scaleZ(1/TRANSLATION);
+        transformations.scaleZ(1 / TRANSLATION);
     }
 
     @FXML
@@ -271,7 +271,9 @@ public class GuiController {
 
     @FXML
     public void resetModel(ActionEvent actionEvent) {
-        transformations.back();
+        if (meshToTransform != null) {
+            transformations.back();
+        }
     }
 
     @FXML
@@ -287,6 +289,8 @@ public class GuiController {
 
     @FXML
     public void triangulateModel(ActionEvent actionEvent) {
-        meshToTransform.setPolygons(Triangulation.polygonsTriangulation(meshToTransform.getPolygons()));
+        if (meshToTransform != null && meshToTransform.getPolygons().size() != 0) {
+            meshToTransform.setPolygons(Triangulation.polygonsTriangulation(meshToTransform.getPolygons()));
+        }
     }
 }
