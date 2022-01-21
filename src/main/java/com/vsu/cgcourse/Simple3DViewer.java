@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import javafx.stage.StageStyle;
 
 public class Simple3DViewer extends Application {
 
@@ -22,6 +23,8 @@ public class Simple3DViewer extends Application {
         viewport.prefHeightProperty().bind(scene.heightProperty());
 
         stage.setTitle("Simple3DViewer");
+        //todo custom title bar starts with next line
+        //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
