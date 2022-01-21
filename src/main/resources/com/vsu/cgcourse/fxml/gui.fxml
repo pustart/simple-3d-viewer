@@ -183,56 +183,56 @@
         </right>
     </BorderPane>
     <Canvas id="canvas" fx:id="canvas" AnchorPane.topAnchor="30.0" />
-    <VBox id="menu-panel" fx:id="optionsPanel" opacity="0.86" prefHeight="600.0" prefWidth="240.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
-        <children>
-            <BorderPane prefHeight="40.0" prefWidth="200.0">
-                <center>
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="33.0" text="Scale" textFill="WHITE" BorderPane.alignment="CENTER" />
-                </center>
-            </BorderPane>
-            <Label text="X: 0.0" textFill="WHITE">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-            </Label>
-            <Slider />
-            <Label text="Y: 0.0" textFill="WHITE" />
-            <Slider />
-            <Label text="Z: 0.0" textFill="WHITE" />
-            <Slider />
-            <BorderPane prefHeight="40.0" prefWidth="220.0">
-                <center>
-                    <Label text="Rotate" textFill="WHITE" BorderPane.alignment="CENTER" />
-                </center>
-            </BorderPane>
-            <Label text="X: 0.0" textFill="WHITE">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-            </Label>
-            <Slider />
-            <Label text="Y: 0.0" textFill="WHITE" />
-            <Slider />
-            <Label text="Z: 0.0" textFill="WHITE" />
-            <Slider />
-            <BorderPane prefHeight="40.0" prefWidth="220.0">
-                <center>
-                    <Label text="Translate" textFill="WHITE" BorderPane.alignment="CENTER" />
-                </center>
-            </BorderPane>
-            <Label text="X: 0.0" textFill="WHITE">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-            </Label>
-            <Slider />
-            <Label text="Y: 0.0" textFill="WHITE" />
-            <Slider />
-            <Label text="Z: 0.0" textFill="WHITE" />
-            <Slider />
-        </children>
+    <VBox id="menu-panel" fx:id="optionsPanel" opacity="0.86" prefHeight="600.0" prefWidth="240.0"
+          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
         </padding>
+        <BorderPane prefHeight="40.0" prefWidth="200.0">
+            <center>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="33.0" text="Scale"
+                       textFill="WHITE" BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+        <Label text="X: 0.0" textFill="WHITE">
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Label>
+        <Slider/>
+        <Label text="Y: 0.0" textFill="WHITE"/>
+        <Slider/>
+        <Label text="Z: 0.0" textFill="WHITE"/>
+        <Slider/>
+        <BorderPane prefHeight="40.0" prefWidth="220.0">
+            <center>
+                <Label text="Rotate" textFill="WHITE" BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+        <Label text="X: 0.0" textFill="WHITE">
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Label>
+        <Slider/>
+        <Label text="Y: 0.0" textFill="WHITE"/>
+        <Slider/>
+        <Label text="Z: 0.0" textFill="WHITE"/>
+        <Slider/>
+        <BorderPane prefHeight="40.0" prefWidth="220.0">
+            <center>
+                <Label text="Translate" textFill="WHITE" BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+        <Label text="X: 0.0" textFill="WHITE">
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Label>
+        <Slider/>
+        <Label text="Y: 0.0" textFill="WHITE"/>
+        <Slider/>
+        <Label text="Z: 0.0" textFill="WHITE"/>
+        <Slider/>
     </VBox>
 </AnchorPane>
