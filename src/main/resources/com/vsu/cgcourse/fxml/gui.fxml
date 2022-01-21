@@ -14,8 +14,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="viewport" fx:id="anchorPane" prefHeight="660.0" prefWidth="866.0" stylesheets="@app.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vsu.cgcourse.GuiController">
-   <BorderPane id="border-panel" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane id="viewport" fx:id="anchorPane" stylesheets="@app.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vsu.cgcourse.GuiController">
+   <BorderPane id="border-panel" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <left>
           <MenuBar id="menu-bar" stylesheets="@app.css" BorderPane.alignment="CENTER">
               <Menu id="menu" mnemonicParsing="false" text="File">
