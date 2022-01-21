@@ -2,15 +2,60 @@
     -fx-background-color: #222;
 }
 #canvas{
-    -fx-background-color: #444;
-}
-#menu-bar, #hbox, .context-menu, .menu-item{
-    -fx-background-color: #151515;
-}
-.menu-button:hover, .menu-button:focused, .menu-button:showing, .menu-item:focused, .menu-item:hovered{
-    -fx-background-color: #333;
+    -fx-background-color: #232426;
 }
 
-#menu .label{
-    -fx-text-fill: #818181;
+#border-panel {
+    -fx-background-color: #2F3032;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #3E3F41;
+    -fx-border-width: 1;
+}
+
+.menu-bar, .context-menu, .menu-item{
+    -fx-border-style: hidden;
+    -fx-background-color: #2F3032;
+}
+
+.menu-button .label {
+    -fx-text-fill: #9C9B9E;
+}
+
+.menu-button:hover, .menu-button:focused, .menu-button:showing, .menu-item:focused, .menu-item:hover{
+    -fx-background-color: #4C5053;
+}
+
+.menu {
+    -fx-background-radius: 6;
+    -fx-background-insets: 0, 0 1 1 0;
+}
+
+.menu:hover {
+    -fx-background-color: #4C5053;
+}
+
+.menu:pressed {
+    -fx-background-color: #5C6164;
+}
+
+#menu-panel {
+    -fx-background-color: #2F3032;
+    -fx-background-radius: 6;
+    -fx-background-insets: 0, 0 1 1 0;
+}
+
+.button {
+    -fx-background-color: #2F3032;
+    -fx-text-fill: #9C9B9E;
+}
+
+.button:hover {
+    -fx-background-radius: 6;
+    -fx-background-insets: 0, 0 1 1 0;
+    -fx-background-color: #4C5053;
+    -fx-text-fill: #FDFFFE;
+}
+
+.button:pressed {
+    -fx-background-color: #5C6164;
 }

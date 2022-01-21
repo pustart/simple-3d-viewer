@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import java.nio.file.Files;
@@ -24,14 +25,17 @@ import com.vsu.cgcourse.renderengine.RenderEngine;
 
 public class GuiController {
     final private float TRANSLATION = 0.5F;
-
     double alpha = 0.01;
+    private boolean showPanelFlag = false;
 
     @FXML
     AnchorPane anchorPane;
 
     @FXML
     private Canvas canvas;
+
+    @FXML
+    private VBox optionsPanel;
 
     private Mesh meshToTransform = null;
     private Mesh originalMesh = null;
@@ -51,6 +55,8 @@ public class GuiController {
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
+        optionsPanel.setVisible(false);
+
 
         KeyFrame frame = new KeyFrame(Duration.millis(15), event -> {
             double width = canvas.getWidth();
@@ -234,5 +240,16 @@ public class GuiController {
     @FXML
     public void handleOffsetMinusModelZ(ActionEvent actionEvent) {
         transformations.offsetZ(-TRANSLATION);
+    }
+
+    @FXML
+    public void options(ActionEvent actionEvent) {
+        if (!showPanelFlag) {
+            optionsPanel.setVisible(true);
+            showPanelFlag = true;
+        } else {
+            optionsPanel.setVisible(false);
+            showPanelFlag = false;
+        }
     }
 }

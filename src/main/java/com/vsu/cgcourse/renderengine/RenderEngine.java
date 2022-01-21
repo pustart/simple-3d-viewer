@@ -38,6 +38,7 @@ public class RenderEngine {
             }
 
             for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
+                //todo color of model is here
                 graphicsContext.setStroke(Color.rgb(122,102,88));
                 graphicsContext.strokeLine(
                         resultPoints.get(vertexInPolygonInd - 1).getX(),
