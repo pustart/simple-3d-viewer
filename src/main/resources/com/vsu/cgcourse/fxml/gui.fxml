@@ -170,6 +170,11 @@
                     <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="DIGIT3"/>
                 </accelerator>
             </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#resetModel" text="Reset">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="DIGIT0"/>
+                </accelerator>
+            </MenuItem>
         </Menu>
     </MenuBar>
 

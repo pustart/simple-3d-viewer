@@ -262,13 +262,8 @@ public class GuiController {
         camera.movePosition(new Vector3f(-TRANSLATION, 0, 0));
     }
 
-    /*@FXML
-    public void handleCameraTurnDown(ActionEvent actionEvent) {
-        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
-    }
-
     @FXML
-    public void handleCameraTurnDown(ActionEvent actionEvent) {
-        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
-    }*/
+    public void resetModel(ActionEvent actionEvent) {
+        transformations.back();
+    }
 }
