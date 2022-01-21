@@ -4,20 +4,28 @@ import com.vsu.cgcourse.model.Triangulation;
 import com.vsu.cgcourse.objreader.ObjReader;
 import com.vsu.cgcourse.objwriter.ObjWriter;
 import com.vsu.cgcourse.renderengine.Transformations;
+import com.vsu.cgcourse.vectormath.Matrix3x3;
+import com.vsu.cgcourse.vectormath.Matrix4x4;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.vsu.cgcourse.vectormath.Vector3f;
 
 import com.vsu.cgcourse.model.Mesh;
@@ -41,6 +49,7 @@ public class GuiController {
     private Mesh meshToTransform = null;
     private Mesh originalMesh = null;
 
+    private Transformations transformations = new Transformations(mesh);
 
     private Transformations transformations;
 
@@ -48,6 +57,8 @@ public class GuiController {
             new Vector3f(0, 00, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
+
+    private Timeline timeline;
 
     @FXML
     private void initialize() {
@@ -65,6 +76,7 @@ public class GuiController {
 
             canvas.getGraphicsContext2D().clearRect(0, 0, width, height);
             camera.setAspectRatio((float) (width / height));
+            enableMouseScroll();
 
             if (meshToTransform != null) {
                 transformations = new Transformations(originalMesh, meshToTransform);
@@ -74,6 +86,17 @@ public class GuiController {
 
         timeline.getKeyFrames().add(frame);
         timeline.play();
+    }
+
+    private void enableMouseScroll() {
+        anchorPane.setOnScroll(new EventHandler<ScrollEvent>() {
+
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+                double deltaY = scrollEvent.getDeltaY();
+                camera.movePosition(new Vector3f(0, 0, (float) deltaY / 5));
+            }
+        });
     }
 
     @FXML
