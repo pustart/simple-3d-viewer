@@ -14,6 +14,8 @@ public class Polygon {
         this.vertexIndexes = vertexIndexes;
     }
 
+    public Polygon() {}
+
     public ArrayList<Integer> getVertexIndexes() {
         return vertexIndexes;
     }
