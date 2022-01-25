@@ -1,12 +1,13 @@
 package com.vsu.cgcourse.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 public class Polygon {
-    private ArrayList<Integer> vertexIndexes;
-    private ArrayList<Integer> textureVertexIndexes;
-    private ArrayList<Integer> normalIndexes;
+    private ArrayList<Integer> vertexIndexes = new ArrayList<>();
+    private ArrayList<Integer> textureVertexIndexes  = new ArrayList<>();
+    private ArrayList<Integer> normalIndexes  = new ArrayList<>();
 
     public Polygon(ArrayList<Integer> vertexIndexes, ArrayList<Integer> textureVertexIndexes, ArrayList<Integer> normalIndexes) {
         this.normalIndexes = normalIndexes;
