@@ -16,4 +16,16 @@ public class Point2f {
         return coordinates[1];
     }
 
+    public void setX(float x) {
+        coordinates[0] = x;
+    }
+
+    public void setY(float y) {
+        coordinates[1] = y;
+    }
+
+    public void set(float x, float y) {
+        coordinates[0] = x;
+        coordinates[1] = y;
+    }
 }
