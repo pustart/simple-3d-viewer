@@ -1,7 +1,8 @@
-#viewport{
+#viewport {
     -fx-background-color: #222;
 }
-#canvas{
+
+#canvas {
     -fx-background-color: #232426;
 }
 
@@ -12,7 +13,7 @@
     -fx-border-width: 1;
 }
 
-.menu-bar, .context-menu, .menu-item{
+.menu-bar, .context-menu, .menu-item {
     -fx-border-style: hidden;
     -fx-background-color: #2F3032;
 }
@@ -21,7 +22,7 @@
     -fx-text-fill: #9C9B9E;
 }
 
-.menu-button:hover, .menu-button:focused, .menu-button:showing, .menu-item:focused, .menu-item:hover{
+.menu-button:hover, .menu-button:focused, .menu-button:showing, .menu-item:focused, .menu-item:hover {
     -fx-background-color: #4C5053;
 }
 
@@ -58,4 +59,19 @@
 
 .button:pressed {
     -fx-background-color: #5C6164;
+}
+
+.slider .track {
+    -fx-background-color: #4C5053;
+}
+
+.slider .thumb {
+    -fx-pref-height: 20;
+    -fx-pref-width: 10;
+    -fx-background-color: #9C9B9E;
+    -fx-border-color: #2F3032;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: #9C9B9E;
 }
