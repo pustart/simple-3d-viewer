@@ -73,7 +73,6 @@ public class GuiController {
     @FXML
     private Label offsetZLabel;
     private Mesh meshToTransform = null;
-    private Mesh originalMesh = null;
     private Transformations transformations;
     private final Camera camera = new Camera(
             new Vector3f(0, 0, 100),
@@ -118,7 +117,7 @@ public class GuiController {
             enableMouseScroll();
 
             if (meshToTransform != null) {
-                transformations = new Transformations(originalMesh, meshToTransform);
+                transformations = new Transformations(meshToTransform);
                 RenderEngine.render(canvas.getGraphicsContext2D(), camera, transformations.getTransformed(), (int) width, (int) height);
             }
         });
@@ -284,7 +283,6 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             meshToTransform = ObjReader.read(fileContent);
-            originalMesh = ObjReader.read(fileContent);
             optionsPanel.setVisible(true);
             resetSliders();
         } catch (IOException exception) {
@@ -312,7 +310,7 @@ public class GuiController {
 
         File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
         if (file != null && meshToTransform != null) {
-            ObjWriter.write(transformations.getOriginal(), file);
+            resetSliders();
             transformations.back();
             ObjWriter.write(transformations.getTransformed(), file);
         }

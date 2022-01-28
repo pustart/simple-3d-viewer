@@ -10,7 +10,6 @@ import static com.vsu.cgcourse.renderengine.GraphicConveyor.multiplyMatrix4ByVec
 
 public class Transformations {
 
-    private final Mesh original;
     private final Mesh transformed;
 
     private static final Matrix4x4 back = new Matrix4x4(new float[][]
@@ -19,8 +18,7 @@ public class Transformations {
                     {0, 0, 1, 0},
                     {0, 0, 0, 1}});
 
-    public Transformations(Mesh original, Mesh meshToTransform) {
-        this.original = original;
+    public Transformations(Mesh meshToTransform) {
         this.transformed = meshToTransform;
     }
 
@@ -103,10 +101,6 @@ public class Transformations {
                 {0, 1, 0, 0},
                 {0, 0, 1, 0},
                 {0, 0, 0, 1}});
-    }
-
-    public Mesh getOriginal() {
-        return original;
     }
 
     public Mesh getTransformed() {
