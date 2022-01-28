@@ -16,7 +16,8 @@ public class RenderEngine {
             final Camera camera,
             final Mesh mesh,
             final int width,
-            final int height) {
+            final int height,
+            boolean polygonFill) {
         //TODO: in graphicsContest something like setPixel/pixelWriter with our own custom
         Matrix4x4 modelMatrix = rotateScaleTranslate();
         Matrix4x4 viewMatrix = camera.getViewMatrix();
@@ -40,7 +41,7 @@ public class RenderEngine {
                 resultPoints.add(resultPoint);
             }
 
-            if (resultPoints.size() != 3) {
+            if (resultPoints.size() != 3 || !polygonFill) {
                 for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
                     //todo color of model is here
                     Rasterisation.drawLine(pixelWriter, (int) resultPoints.get(vertexInPolygonInd - 1).getX(),

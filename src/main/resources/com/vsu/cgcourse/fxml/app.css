@@ -75,3 +75,17 @@
 .slider .axis {
     -fx-tick-label-fill: #9C9B9E;
 }
+
+.check-box .box {
+    -fx-background-color: #2F3032;
+    -fx-border-color: #4C5053;
+    -fx-border-radius: 0;
+}
+
+.check-box .mark {
+    -fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #9C9B9E;
+}

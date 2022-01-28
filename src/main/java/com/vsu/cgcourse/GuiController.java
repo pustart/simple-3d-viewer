@@ -9,6 +9,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.input.*;
@@ -29,6 +30,8 @@ public class GuiController {
     final private float TRANSLATION = 0.5F;
     double alpha = 0.01;
     private boolean showPanelFlag = false;
+    private boolean polygonFill = false;
+    private boolean showDrawSettingsFlag = false;
 
     @FXML
     AnchorPane anchorPane;
@@ -36,6 +39,8 @@ public class GuiController {
     private Canvas canvas;
     @FXML
     private VBox optionsPanel;
+    @FXML
+    private VBox drawingPanel;
     @FXML
     private Slider rotateX;
     @FXML
@@ -72,6 +77,8 @@ public class GuiController {
     private Slider offsetZ;
     @FXML
     private Label offsetZLabel;
+    @FXML
+    private CheckBox showPolygons;
     private Mesh meshToTransform = null;
     private Transformations transformations;
     private final Camera camera = new Camera(
@@ -85,8 +92,11 @@ public class GuiController {
         anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
         changeArrowPolicy();
         optionsPanel.setVisible(false);
+        drawingPanel.setVisible(false);
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
+
+        initializeCheckBox(showPolygons, false, false, false);
 
         initializeSlider(scaleX, -3, 3, 0, TRANSLATION);
         initializeSlider(scaleY, -3, 3, 0, TRANSLATION);
@@ -97,6 +107,8 @@ public class GuiController {
         initializeSlider(offsetX, -10, 10, 0, TRANSLATION);
         initializeSlider(offsetY, -10, 10, 0, TRANSLATION);
         initializeSlider(offsetZ, -10, 10, 0, TRANSLATION);
+
+        enableShowPolygonsCheckbox();
 
         enableScaleX();
         enableScaleY();
@@ -118,12 +130,18 @@ public class GuiController {
 
             if (meshToTransform != null) {
                 transformations = new Transformations(meshToTransform);
-                RenderEngine.render(canvas.getGraphicsContext2D(), camera, transformations.getTransformed(), (int) width, (int) height);
+                RenderEngine.render(canvas.getGraphicsContext2D(), camera, transformations.getTransformed(), (int) width, (int) height, polygonFill);
             }
         });
 
         timeline.getKeyFrames().add(frame);
         timeline.play();
+    }
+
+    private void initializeCheckBox(CheckBox checkBox, boolean allowIndeterminate, boolean isIndeterminate, boolean isSelected) {
+        checkBox.setAllowIndeterminate(allowIndeterminate);
+        checkBox.setIndeterminate(isIndeterminate);
+        checkBox.setSelected(isSelected);
     }
 
     private void initializeSlider(Slider slider, double min, double max, double currValue, double increment) {
@@ -133,6 +151,10 @@ public class GuiController {
         slider.setShowTickLabels(true);
         slider.setShowTickMarks(true);
         slider.setBlockIncrement(increment);
+    }
+
+    private void enableShowPolygonsCheckbox() {
+        showPolygons.selectedProperty().addListener((observable, oldValue, newValue) -> polygonFill = newValue);
     }
 
     private void enableScaleX() {
@@ -526,6 +548,17 @@ public class GuiController {
         } else {
             optionsPanel.setVisible(false);
             showPanelFlag = false;
+        }
+    }
+
+    @FXML
+    public void drawingSettings() {
+        if (!showDrawSettingsFlag) {
+            drawingPanel.setVisible(true);
+            showDrawSettingsFlag = true;
+        } else {
+            drawingPanel.setVisible(false);
+            showDrawSettingsFlag = false;
         }
     }
 
