@@ -109,7 +109,7 @@ public class Rasterisation {
         return values;
     }
 
-    public static void fillTriangle(PixelWriter pixelWriter, Point2f p0, Point2f p1, Point2f p2) {
+    public static void fillFlatTriangle(PixelWriter pixelWriter, Point2f p0, Point2f p1, Point2f p2) {
         Point2f temp = new Point2f(0, 0);
         if (p1.getY() < p0.getY()) {
             temp.set(p0.getX(), p0.getY());

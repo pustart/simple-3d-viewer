@@ -57,7 +57,7 @@ public class RenderEngine {
                             (int) resultPoints.get(0).getY());
                 }
             } else {
-                Rasterisation.fillTriangle(pixelWriter, resultPoints.get(0), resultPoints.get(1), resultPoints.get(2));
+                Rasterisation.fillFlatTriangle(pixelWriter, resultPoints.get(0), resultPoints.get(1), resultPoints.get(2));
                 Rasterisation.drawTriangle(pixelWriter, resultPoints.get(0), resultPoints.get(1), resultPoints.get(2));
             }
         }
